@@ -5,6 +5,5 @@
 
 ### Tech Stack 
 
-Frontend with `react`
-
+Frontend with `react`<br>
 Backend with `express`/`sequelize` 
