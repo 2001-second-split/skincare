@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const {Ingredient} = require('../db/models')
 module.exports = router
+const {Op} = require('sequelize')
 
 // const checkIfAdmin = (req, res, next) => {
 //   if (req.user === undefined || req.user.accountType !== 'Admin') {
@@ -15,6 +16,22 @@ router.get('/', async (req, res, next) => {
   try {
     const ingredients = await Ingredient.findAll()
     res.json(ingredients)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/:name', async (req, res, next) => {
+  let searchTerm = req.params.name.toLowerCase()
+  try {
+    const ingredient = await Ingredient.findOne({
+      where: {
+        name: {
+          [Op.substring]: searchTerm
+        }
+      }
+    })
+    res.json(ingredient)
   } catch (err) {
     next(err)
   }
