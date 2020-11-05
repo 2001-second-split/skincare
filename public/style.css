@@ -19,3 +19,31 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.search-box {
+  background: #FBFBFB;
+  border: 1px solid #EAEAEA;
+  border-radius: 3px;
+  margin: 10px;
+  padding: 5px;
+  display: flex;
+
+  /* background-color: #f2f2f2;
+    height: 27px;
+    margin-top: 8px;
+    font-size: 14px; */
+  max-width: 300px;
+}
+
+.search-input {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 0px;
+  padding: 5px 0px;
+  font-size: 1em;
+  position: relative;
+  outline: 0px;
+  width: 75%;
+}
