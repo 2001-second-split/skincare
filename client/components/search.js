@@ -1,8 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import {logout} from '../store'
+// import PropTypes from 'prop-types'
+// import {Link} from 'react-router-dom'
 
 import SearchBar from './searchbar'
 
@@ -17,7 +17,7 @@ class Search extends React.Component {
   }
 
   onSearch() {
-    console.log('hi')
+    console.log('work in progress - displaying ingredient information')
     // code to retrieve info from server
   }
 
@@ -25,7 +25,7 @@ class Search extends React.Component {
     return (
       <>
         <h2>What would you like to lookup?</h2>
-        <SearchBar searchBoxName={"userNameSearch"}
+        <SearchBar searchBoxInput={"userNameSearch"}
         onSearchTermChange={this.onSearch} />
         {/* <SkincareList list={this.skincareList} /> */}
       </>
@@ -34,9 +34,7 @@ class Search extends React.Component {
 
 }
 
-/**
- * CONTAINER
- */
+/* CONTAINER */
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id
@@ -53,9 +51,7 @@ const mapDispatch = dispatch => {
 
 export default connect(mapState, mapDispatch)(Search)
 
-/**
- * PROP TYPES
- */
+/* PROP TYPES */
 Search.propTypes = {
 
 }

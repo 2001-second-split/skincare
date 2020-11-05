@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
   }
 
   onInputChange(term){
-    const name = this.props.searchBoxName || undefined;
+    const name = this.props.searchBoxInput || undefined;
 
     this.setState({term});
 
