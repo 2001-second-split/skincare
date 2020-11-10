@@ -49,7 +49,7 @@ async function seed() {
 
   const interactions = await Promise.all([
     Interactions.create({IngredientId: 1, InteractingIngredientId: 2}),
-    Interactions.create({IngredientId: 2, InteractingIngredientId: 2})
+    Interactions.create({IngredientId: 2, InteractingIngredientId: 1})
   ])
 
   console.log(`seeded ${ingredients.length} ingredients`)
