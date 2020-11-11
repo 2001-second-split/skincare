@@ -11,9 +11,6 @@ const Ingredient = db.define('ingredient', {
     type: Sequelize.TEXT,
     allowNull: false
   },
-  interactions: {
-    type: Sequelize.ARRAY(Sequelize.INTEGER)
-  },
   bestTime: {
     type: Sequelize.ENUM('morning', 'night', 'any time'),
     defaultValue: 'any time'
