@@ -10,25 +10,21 @@ class SearchBar extends React.Component {
 
   }
 
-  onInputChange(term){
-    const name = this.props.searchBoxInput || undefined;
-
+  onInputChange(term) {
     this.setState({term});
 
     if(this.props.onSearchTermChange){
-      this.props.onSearchTermChange({name,term})
+      this.props.onSearchTermChange(term)
     }
 
   }
 
   render() {
-    const name = this.props.searchBoxName || undefined;
     const styling = {};
 
     return (
       <div className="search-box">
         <input
-          name={name}
           className="search-input"
           id="search"
           type="text"
@@ -38,9 +34,6 @@ class SearchBar extends React.Component {
           onChange={ (event) => this.onInputChange(event.target.value)}
           onKeyDown={this.props.onKeyDown || null}
         />
-        <button type='button' onClick={this.searchTerm || null}>
-          Search
-        </button>
       </div>
     );
   }

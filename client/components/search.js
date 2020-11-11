@@ -4,30 +4,37 @@ import {logout} from '../store'
 // import PropTypes from 'prop-types'
 // import {Link} from 'react-router-dom'
 
+import axios from 'axios';
+
 import SearchBar from './searchbar'
+import SearchResults from './searchresults'
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      inputValue: '',
-      skincareList: ['Niacinamide', 'Acid', 'Moisturizer'],
+      ingredients: [],
+      searchTerm: ''
     }
   }
 
-  onSearch() {
-    console.log('work in progress - displaying ingredient information')
-    // code to retrieve info from server
+  async componentDidMount() {
+    const res = await axios.get('/api/ingredients')
+    this.setState({ingredients: res.data})
+  }
+
+  onSearch(searchTerm) {
+    this.setState({searchTerm: searchTerm.toLowerCase()});
   }
 
   render() {
     return (
       <>
         <h2>What would you like to lookup?</h2>
-        <SearchBar searchBoxInput={"userNameSearch"}
-        onSearchTermChange={this.onSearch} />
-        {/* <SkincareList list={this.skincareList} /> */}
+        <SearchBar onSearchTermChange={(term) => this.onSearch(term)} />
+        <br/>
+        <SearchResults list={this.state.ingredients} searchTerm={this.state.searchTerm}/>
       </>
     )
   }

@@ -19,7 +19,8 @@ router.get('/', async (req, res, next) => {
         model: Ingredient,
         as: 'Ingredient1',
         attributes: ['id', 'name']
-      }
+      },
+      order: [ ['id', 'ASC'] ]
     })
     res.json(ingredients)
   } catch (err) {
