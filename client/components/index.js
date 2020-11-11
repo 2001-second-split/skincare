@@ -7,3 +7,5 @@ export {default as Navbar} from './navbar'
 export {default as Search} from './search'
 export {default as UserHome} from './user-home'
 export {Login, Signup} from './auth-form'
+
+export {default as SearchHook} from './search-hooks'
