@@ -20,14 +20,14 @@ const Interactions = require('./interactions')
 // Interactions.belongsToMany(Ingredient)
 
 Ingredient.belongsToMany(Ingredient, {
-  through: Interactions,
+  through: 'Interactions',
   as: 'Ingredient1',
   foreignKey: 'IngredientId',
   otherKey: 'InteractingIngredientId'
 })
 
 Ingredient.belongsToMany(Ingredient, {
-  through: Interactions,
+  through: 'Interactions',
   as: 'Ingredient2',
   foreignKey: 'InteractingIngredientId',
   otherKey: 'IngredientId'

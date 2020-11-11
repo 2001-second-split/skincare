@@ -1,8 +1,7 @@
 const router = require('express').Router()
 const {Ingredient} = require('../db/models')
-module.exports = router
 const {Op} = require('sequelize')
-const Interactions = require('../db/models/interactions')
+module.exports = router
 
 // const checkIfAdmin = (req, res, next) => {
 //   if (req.user === undefined || req.user.accountType !== 'Admin') {
@@ -15,7 +14,13 @@ const Interactions = require('../db/models/interactions')
 
 router.get('/', async (req, res, next) => {
   try {
-    const ingredients = await Ingredient.findAll()
+    const ingredients = await Ingredient.findAll({
+      include: {
+        model: Ingredient,
+        as: 'Ingredient1',
+        attributes: ['id', 'name']
+      }
+    })
     res.json(ingredients)
   } catch (err) {
     next(err)
@@ -25,15 +30,19 @@ router.get('/', async (req, res, next) => {
 router.get('/search/:name', async (req, res, next) => {
   let searchTerm = req.params.name.toLowerCase()
   try {
-    const ingredient = await Ingredient.findAll({
+    const ingredients = await Ingredient.findAll({
       where: {
         name: {
           [Op.substring]: searchTerm
         }
+      },
+      include: {
+        model: Ingredient,
+        as: 'Ingredient1',
+        attributes: ['id', 'name']
       }
-      // include: Interactions
     })
-    res.json(ingredient)
+    res.json(ingredients)
   } catch (err) {
     next(err)
   }
@@ -41,7 +50,16 @@ router.get('/search/:name', async (req, res, next) => {
 
 router.get('/id/:id', async (req, res, next) => {
   try {
-    const ingredient = await Ingredient.findByPk(req.params.id)
+    const ingredient = await Ingredient.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: {
+        model: Ingredient,
+        as: 'Ingredient1',
+        attributes: ['id', 'name']
+      }
+    })
     res.json(ingredient)
   } catch (err) {
     next(err)
