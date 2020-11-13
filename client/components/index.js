@@ -8,4 +8,6 @@ export {default as Search} from './search'
 export {default as UserHome} from './user-home'
 export {Login, Signup} from './auth-form'
 
-export {default as SearchHook} from './search-hooks'
+// hook components for testing/learning
+export {default as SearchHook} from './hooks-search'
+// export {SearchBarHook} from './hooks-searchbar'
