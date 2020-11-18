@@ -10,4 +10,6 @@ export {Login, Signup} from './auth-form'
 
 // hook components for testing/learning
 export {default as SearchHook} from './hooks-search'
+export {default as SingleIngredient} from './singleIngredient'
+
 // export {SearchBarHook} from './hooks-searchbar'
