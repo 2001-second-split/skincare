@@ -37,13 +37,7 @@ export default function SearchHook() {
       <br/>
 
       <SearchResultsHook list={ingredients} searchTerm={searchTerm}/>
-      {/* <ul>
-        {ingredients.map(ingred => (
-          <li key={ingred.id}>
-            {ingred.name}
-          </li>
-        ))}
-      </ul> */}
+
     </div>
   );
 }
